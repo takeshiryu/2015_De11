@@ -1,0 +1,17 @@
+### MAIN DEFAULTS
+Options +ExecCGI -Indexes
+DirectoryIndex index.html index.htm index.php
+DefaultLanguage en-US
+AddDefaultCharset UTF-8
+ServerSignature Off
+  
+AddHandler php5-script .php .html
+
+## REWRITE DEFAULTS
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^page/([0-9]+).html$ /PHPProject/page.php?category=$1	[NC,L]
+RewriteRule ^products/([0-9]+).html$ /PHPProject/product.php?id=$1	[NC,L]
